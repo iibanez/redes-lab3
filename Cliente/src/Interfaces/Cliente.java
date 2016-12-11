@@ -43,7 +43,7 @@ public class Cliente extends javax.swing.JFrame {
         
         try {
             this.cliente = new InterfazClienteImpl();
-            //ppal = new ControladorPrincipal(this);
+            ppal = new ControladorPrincipal(this);
         } catch (RemoteException ex) {
             System.out.println(ex);
         }
@@ -93,6 +93,13 @@ public class Cliente extends javax.swing.JFrame {
         String destino = (String) token.nextElement();
         b = new BigInteger((String)token.nextElement());
         
+        if(this.destino.getText() == origen){
+            JOptionPane.showMessageDialog(this, "El usuario "+ origen+ "ha respondido su solicitud de conexión.");
+        }else{
+            JOptionPane.showMessageDialog(this, "El usuario "+ origen+ "quiere establecer una conexión con usted "+destino);
+        
+        }
+        
         if(nonce!=null && b!=null){
             this.boton_ver_clave.setEnabled(true);
         }
@@ -100,6 +107,21 @@ public class Cliente extends javax.swing.JFrame {
         //se muestra el valor que es recibido
         this.a_entrada.setText(String.valueOf(b));
 
+    }
+    
+    public void mostrar_mensaje(String mensaje){
+        
+        //se recibe el mensaje y es dividido
+        StringTokenizer token = new StringTokenizer(mensaje, ";"); 
+        String origen = (String) token.nextElement();
+        String destino = (String) token.nextElement();
+        String mensaje_c = (String)token.nextElement();
+        
+        this.mensaje_dec.setText(mensaje_c);
+        this.mensaje_cod.setText(mensaje_c);
+        
+        JOptionPane.showMessageDialog(this, "Usted "+ destino+ " ha recibido un mensaje de "+ origen+ " el que ha sido decodificado.");
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -208,6 +230,11 @@ public class Cliente extends javax.swing.JFrame {
         boton_enviar_mensaje.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 boton_enviar_mensajeMouseClicked(evt);
+            }
+        });
+        boton_enviar_mensaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_enviar_mensajeActionPerformed(evt);
             }
         });
 
@@ -432,7 +459,7 @@ public class Cliente extends javax.swing.JFrame {
         //se crea el mensaje para enviar de A a B
         String mensaje = this.nombreUsuario+";"+userDestino+";"+String.valueOf(a);
         try {
-            this.servidor.paso3(userDestino, mensaje);
+            this.servidor.enviar_a(userDestino, mensaje);
         }
         catch (RemoteException ex){
             this.boton_receptor.setEnabled(true);
@@ -505,9 +532,14 @@ public class Cliente extends javax.swing.JFrame {
         this.ks.setText(String.valueOf(key));
         
         //activar para escribir un mensaje y poder enviarlo
+        this.boton_ver_clave.setEnabled(false);
         this.mensaje_enviar.setEnabled(true);
         this.boton_enviar_mensaje.setEnabled(true);
     }//GEN-LAST:event_boton_ver_claveActionPerformed
+
+    private void boton_enviar_mensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_enviar_mensajeActionPerformed
+        
+    }//GEN-LAST:event_boton_enviar_mensajeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

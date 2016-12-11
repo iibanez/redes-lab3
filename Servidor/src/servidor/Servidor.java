@@ -48,84 +48,18 @@ public class Servidor extends UnicastRemoteObject implements InterfazServidor{
         return true;
     }
 
-    /*@Override
-    public void paso3(String destino, String paramString) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }*/
-
     @Override
-    public void paso4(String destino, String nonce) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void paso5(String destino, String nonce) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-   
-    //Aqui el servidor le entrega al cliente el nonce recibido - 1
-    //entrega la clave sesion, entrega el nombre del destinario
-    //entrega la clave de sesion y el origen encriptado con la clave publica de B
-    //y todo esta encriptado con la clave publica de A
-    //@Override
-    /*public synchronized String paso2(String mensaje) throws RemoteException{
-        StringTokenizer token = new StringTokenizer(mensaje, ";"); 
-        String origen = token.nextToken();
-        String destino = token.nextToken();
-        int A = Integer.parseInt(token.nextToken());
-        Cliente clienteDestino=clientesAuthenticated.getCliente(destino);
-        Cliente clienteOrigen=clientesAuthenticated.getCliente(origen);
-        if(clienteDestino==null || clienteOrigen==null ){
-            return "";
-        }
-        //String clavedestino = clienteDestino.getClavePublica();
-        //String claveorigen = clienteOrigen.getClavePublica();
-        //String clavesesion = Integer.toString(round(10000000 +  new Random().nextFloat()*90000000));
-        //String mensajedestino = clavesesion+";"+origen;
-        /////////////
-        //ENCRIPTAR
-        /////////////
-        //String mensajedestino = ppal.ejecutarAlgoritmoCifrado(clavedestino, mensajedestino);
-        //String mensajeorigen = Integer.toString(nonce)+";"+destino+";"+clavesesion+";"+mensajedestino;
-        ///////////////
-        //DESENCRIPTAR
-        ///////////////
-        //mensajeorigen = ppal.ejecutarAlgoritmoCifrado(claveorigen,mensajeorigen);
-        //System.out.println("O: "+origen+" - D: "+destino+" Mensaje: "+mensajeorigen);
-        
-        return mensajeorigen;
-    }*/
-    
-    
-    // Funcion de lado del servidor que permite a A enviar el mensaje correspondiente en el paso 3
-    // a B
-    @Override
-    public synchronized void paso3(String clienteDestino, String mensaje) throws RemoteException{
+    public synchronized void enviar_a(String clienteDestino, String mensaje) throws RemoteException{
         Cliente clienteDestinoC = this.clientesAuthenticated.getCliente(clienteDestino);
         InterfazCliente ic = clienteDestinoC.getIc();
         ic.notificar(mensaje,0);
     }
     
-    /*
-    // Funcion de lado del servidor que permite a B enviar su nonce a A
-    //@Override
-    public void paso4(String destino, String nonce) throws RemoteException {
-        Cliente clienteDestinoC = this.clientesAuthenticated.getCliente(destino);
-        InterfazCliente ic = clienteDestinoC.getIc();
-        ic.notificar(nonce,4);
-    }
-    // Funcion de lado del servidor que permite a A enviar el nonce-1 de B
-    // a B
-    //@Override
-    public void paso5(String destino, String nonce) throws RemoteException {
-        Cliente clienteDestinoC = this.clientesAuthenticated.getCliente(destino);
-        InterfazCliente ic = clienteDestinoC.getIc();
-        ic.notificar(nonce,5);
-    }*/
-
     @Override
-    public String paso2(String mensaje) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public synchronized void enviar_mensaje(String clienteDestino, String mensaje) throws RemoteException{
+        Cliente clienteDestinoC = this.clientesAuthenticated.getCliente(clienteDestino);
+        InterfazCliente ic = clienteDestinoC.getIc();
+        ic.notificar(mensaje,1);
     }
+    
 }

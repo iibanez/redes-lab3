@@ -16,6 +16,8 @@ public class InterfazClienteImpl extends UnicastRemoteObject implements Interfaz
         if(funcion == 0){
              Cliente.getInstanciaVista().trasmitir_a(mensaje);
         }
-        //else if
+        else if(funcion == 1){
+            Cliente.getInstanciaVista().mostrar_mensaje(mensaje);
+        }
     }
 }
