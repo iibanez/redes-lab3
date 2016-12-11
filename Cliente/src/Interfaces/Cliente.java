@@ -14,7 +14,8 @@ import java.awt.event.MouseEvent;
 import static java.lang.StrictMath.pow;
 import java.math.BigInteger;
 import java.util.StringTokenizer;
-
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 //Clase que extiende a JFrame, que se ocupa para interactuar con el usuario
 public class Cliente extends javax.swing.JFrame {
     //http://mimosa.pntic.mec.es/jgomez53/matema/conocer/10000_primos.htm
@@ -96,9 +97,11 @@ public class Cliente extends javax.swing.JFrame {
         b = new BigInteger((String)token.nextElement());
         
         if(origen.equals(this.destino.getText())){
-            JOptionPane.showMessageDialog(this, "El usuario "+ origen+ " ha respondido su solicitud de conexión.");
+            Icon icon = new ImageIcon(getClass().getResource("/Recursos/correcto.png"));
+            JOptionPane.showMessageDialog(this, "El usuario "+ origen+ " ha respondido su solicitud de conexión.", "Conexión", JOptionPane.INFORMATION_MESSAGE, icon);
         }else{
-            JOptionPane.showMessageDialog(this, "El usuario "+ origen+ " quiere establecer una conexión con usted "+destino+".");
+            Icon icon = new ImageIcon(getClass().getResource("/Recursos/comunicar.png"));
+            JOptionPane.showMessageDialog(this, "El usuario "+ origen+ " quiere establecer una conexión con usted "+destino+".", "Conexión", JOptionPane.INFORMATION_MESSAGE, icon);
         
         }
         
@@ -124,8 +127,8 @@ public class Cliente extends javax.swing.JFrame {
         this.mensaje_dec.setText(msg);
         this.mensaje_cod.setText(mensaje);
         
-        JOptionPane.showMessageDialog(this, "Usted "+ destino+ " ha recibido un mensaje de "+ origen+ ", el que ha sido decodificado.");
-        
+        Icon icon = new ImageIcon(getClass().getResource("/Recursos/mensaje.png"));
+        JOptionPane.showMessageDialog(this, "Usted "+ destino+ " ha recibido un mensaje de "+ origen+ ", el que ha sido decodificado.", "Comunicación", JOptionPane.INFORMATION_MESSAGE, icon);
         
     }
     /**
@@ -485,7 +488,9 @@ public class Cliente extends javax.swing.JFrame {
             try{
                 if (iniciarRegistry()){
                     if(this.servidor.registrarCliente(this.cliente,nombreUsuario,passwordUsuario)){
-                        JOptionPane.showMessageDialog(this, "Conectado a Servidor", "Mensaje", 0);
+                        Icon icon = new ImageIcon(getClass().getResource("/Recursos/correcto.png"));
+                        JOptionPane.showMessageDialog(this, "Conectado a Servidor" , "Identificación", JOptionPane.INFORMATION_MESSAGE, icon);
+        
                         this.usuario.setEnabled(false);
                         this.password.setEnabled(false);
                         this.boton_registrar.setEnabled(false);
