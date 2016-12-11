@@ -26,7 +26,7 @@ public class Clientes {
     //Se leen las lineas del archivo donde se encuentran los usuarios
     //y se agregan estos al arreglo de clientes
     private void loadClientes(){
-        /*try {
+        try {
             BufferedReader br = new BufferedReader(new FileReader(this.db));
             String linea;
             String[] partes;
@@ -41,27 +41,8 @@ public class Clientes {
         }
         catch(IOException ex){
             System.out.println("Error carga de archivo: "+ex.getMessage());
-        }*/
-        this.clientes.add(new Cliente("ignacio","123"));
-        this.clientes.add(new Cliente("naty","123"));
+        }
     }
-    
-    //Se agrega cliente a la DB (esta funcion no se usa)
-    /*public void addCliente(String username,String password){
-        try {
-            FileWriter file = new FileWriter(this.db,true);
-            String linea = username+";"+password;
-            file.write(linea+"\n");
-            file.close();
-            this.clientes.add(new Cliente(username,password));
-        }
-        catch (FileNotFoundException ex) {
-            System.out.println("Error carga de archivo: "+ex.getMessage());
-        }
-        catch(IOException ex){
-            System.out.println("Error carga de archivo: "+ex.getMessage());
-        }
-    }*/
     
     //Se revisa en el arreglo de clientes registrados, si el usuario
     //"username" se encuentra registrado

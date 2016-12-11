@@ -1,3 +1,5 @@
+package Codificador;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -15,29 +17,11 @@ public class LeerArchivo{
 	//constructor de la clase LeerArchivo
 	//nombre: corresponde al nombre del archivo de texto a leer
 	//bloques: corresponde al largo de los bloques en la lectura
-	public LeerArchivo(String nombre, int bloques){
+	public LeerArchivo(int bloques){
 		this.bloques = bloques - 2;
-		this.nombre_archivo =  nombre;
-	}
-
-	//encargada de la lectura del archivo de texto uniendo todas las lineas
-	//en un string
-	public void leerContenido() throws FileNotFoundException, IOException {
-    	String cadena;
-    	FileReader f = new FileReader(this.nombre_archivo);
-    	BufferedReader b = new BufferedReader(f);
-    	int i = 0;
-    	while((cadena = b.readLine())!=null) {
-    		if(texto!=""){
-    			this.texto = this.texto +"\n"+ cadena;
-    		}else{
-    			this.texto = cadena;
-    		}
-    	}
-      	b.close();
-      	this.fin = this.texto.length();
 	}
         
+        //agrega el texto desde el textarea
         public void setTexto(String text){
             this.texto = text;
             this.fin = this.texto.length();

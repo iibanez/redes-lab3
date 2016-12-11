@@ -47,7 +47,8 @@ public class Servidor extends UnicastRemoteObject implements InterfazServidor{
         System.out.println("Cliente "+username+" autenticado con éxito");
         return true;
     }
-
+    
+    //se encarga de relizar el envio de la peticion de conexión
     @Override
     public synchronized void enviar_a(String clienteDestino, String mensaje) throws RemoteException{
         Cliente clienteDestinoC = this.clientesAuthenticated.getCliente(clienteDestino);
@@ -55,6 +56,7 @@ public class Servidor extends UnicastRemoteObject implements InterfazServidor{
         ic.notificar(mensaje,0);
     }
     
+    //encargada de enviar mensajes entre A y B
     @Override
     public synchronized void enviar_mensaje(String clienteDestino, String mensaje) throws RemoteException{
         Cliente clienteDestinoC = this.clientesAuthenticated.getCliente(clienteDestino);

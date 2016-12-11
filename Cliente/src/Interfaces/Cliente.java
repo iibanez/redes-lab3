@@ -14,14 +14,12 @@ import java.awt.event.MouseEvent;
 import static java.lang.StrictMath.pow;
 import java.math.BigInteger;
 import java.util.StringTokenizer;
-//import java.util.logging.Level;
-//import java.util.logging.Logger;
 
 //Clase que extiende a JFrame, que se ocupa para interactuar con el usuario
 public class Cliente extends javax.swing.JFrame {
     //http://mimosa.pntic.mec.es/jgomez53/matema/conocer/10000_primos.htm
     private BigInteger p = new BigInteger("104683");
-    private BigInteger g = new BigInteger("877");
+    private BigInteger g = new BigInteger("93083");
     private Registry registry;
     private InterfazServidor servidor;
     private InterfazCliente cliente; 
@@ -31,9 +29,11 @@ public class Cliente extends javax.swing.JFrame {
     private ControladorPrincipal ppal;
     private BigInteger nonce,a,b,key;
     
+    //inicializa los componentes de la vista
     public Cliente() {
         initComponents();
         this.setVisible(true);
+        this.iniciar_c.setText("Comenzar Conexión con p="+String.valueOf(p)+" y g="+String.valueOf(g));
         this.boton_receptor.setEnabled(false);
         this.boton_enviar_mensaje.setEnabled(false);
         this.boton_ver_clave.setEnabled(false);
@@ -85,6 +85,8 @@ public class Cliente extends javax.swing.JFrame {
         }
     }
     
+    //es la respuesta correspondiente a cuando el usuario quiere realizar
+    //el paso de valores entre usuarios para lograr obtener una clave secreta
     public void trasmitir_a(String mensaje){
         
         //se recibe el mensaje y es dividido
@@ -93,10 +95,10 @@ public class Cliente extends javax.swing.JFrame {
         String destino = (String) token.nextElement();
         b = new BigInteger((String)token.nextElement());
         
-        if(this.destino.getText() == origen){
-            JOptionPane.showMessageDialog(this, "El usuario "+ origen+ "ha respondido su solicitud de conexión.");
+        if(origen.equals(this.destino.getText())){
+            JOptionPane.showMessageDialog(this, "El usuario "+ origen+ " ha respondido su solicitud de conexión.");
         }else{
-            JOptionPane.showMessageDialog(this, "El usuario "+ origen+ "quiere establecer una conexión con usted "+destino);
+            JOptionPane.showMessageDialog(this, "El usuario "+ origen+ " quiere establecer una conexión con usted "+destino+".");
         
         }
         
@@ -109,18 +111,21 @@ public class Cliente extends javax.swing.JFrame {
 
     }
     
+    //corresponde a la función encargada de realizar el envio del mensaje desde
+    //un origen a un destino
     public void mostrar_mensaje(String mensaje){
         
         //se recibe el mensaje y es dividido
-        StringTokenizer token = new StringTokenizer(mensaje, ";"); 
+        String mensaje_d = ppal.ejecutarAlgoritmoDescifrado(String.valueOf(key), mensaje);
+        StringTokenizer token = new StringTokenizer(mensaje_d, ";"); 
         String origen = (String) token.nextElement();
         String destino = (String) token.nextElement();
-        String mensaje_c = (String)token.nextElement();
+        String msg = (String)token.nextElement();
+        this.mensaje_dec.setText(msg);
+        this.mensaje_cod.setText(mensaje);
         
-        this.mensaje_dec.setText(mensaje_c);
-        this.mensaje_cod.setText(mensaje_c);
+        JOptionPane.showMessageDialog(this, "Usted "+ destino+ " ha recibido un mensaje de "+ origen+ ", el que ha sido decodificado.");
         
-        JOptionPane.showMessageDialog(this, "Usted "+ destino+ " ha recibido un mensaje de "+ origen+ " el que ha sido decodificado.");
         
     }
     /**
@@ -142,7 +147,7 @@ public class Cliente extends javax.swing.JFrame {
         usuario = new javax.swing.JTextField();
         password = new javax.swing.JTextField();
         boton_registrar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        iniciar_c = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         a_salida = new javax.swing.JTextField();
@@ -192,7 +197,7 @@ public class Cliente extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Comenzar Conexión");
+        iniciar_c.setText("Comenzar Conexión");
 
         jLabel5.setText("a  = g^A mod p  (se envia):");
 
@@ -321,29 +326,28 @@ public class Cliente extends javax.swing.JFrame {
                             .addComponent(a_entrada, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(a_salida, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(random, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
                             .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(ks, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(75, 75, 75)
-                                    .addComponent(boton_ver_clave, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(destino, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel12))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(boton_enviar_mensaje, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
-                                        .addComponent(boton_receptor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(boton_registrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(ks, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(75, 75, 75)
+                                .addComponent(boton_ver_clave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(destino, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel12))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(boton_enviar_mensaje, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                                    .addComponent(boton_receptor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(boton_registrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(iniciar_c, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 73, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -359,7 +363,7 @@ public class Cliente extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addComponent(jLabel4)
+                .addComponent(iniciar_c)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(destino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -539,6 +543,19 @@ public class Cliente extends javax.swing.JFrame {
 
     private void boton_enviar_mensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_enviar_mensajeActionPerformed
         
+        String userDestino = destino.getText();
+        String mensaje_1 = this.nombreUsuario+";"+userDestino+";"+mensaje_enviar.getText();
+        //es codificado el mensaje
+        String codificado = ppal.ejecutarAlgoritmoCifrado(String.valueOf(key), mensaje_1);
+        
+        try {
+            //es realizado el envio del mensaje
+            this.servidor.enviar_mensaje(userDestino, codificado);
+        }
+        catch (RemoteException ex){
+            System.out.println(ex);
+        }
+        
     }//GEN-LAST:event_boton_enviar_mensajeActionPerformed
 
 
@@ -550,6 +567,7 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JButton boton_registrar;
     private javax.swing.JButton boton_ver_clave;
     private javax.swing.JTextField destino;
+    private javax.swing.JLabel iniciar_c;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -557,7 +575,6 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

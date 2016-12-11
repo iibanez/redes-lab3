@@ -1,3 +1,5 @@
+package Codificador;
+
 
 public class Decodificacion{
 	

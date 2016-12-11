@@ -1,100 +1,38 @@
 package implementaciones;
 
 //import Cifrado.CifradoDescifrado;
-//import Cifrado.SubClave;
+import Codificador.*;
 import Interfaces.Cliente;
-import java.util.ArrayList;
-import java.util.Vector;
 
 public class ControladorPrincipal{
-    private String nombreArchivo;
-    /*private SubClave subclaves;
-    private CifradoDescifrado cifrar;
-    private CifradoDescifrado descifrar;
-    private boolean esCifrado;*/
-    private ArrayList mensajes = new ArrayList();
     Cliente vista;
+    int bloques = 32; //corresponde al tamaño del bloque que puede cambiar de 32 hasta 255
+                           //considerar que al verdadero valor con el mensaje es de 30 hasta 253
+                           //debido a que 2 caracteres son para indicar el valor real del mensaje
   
     public ControladorPrincipal(Cliente vista){
         this.vista = vista;
-        this.nombreArchivo = null;
     }
-    // funcion que utiliza la implementacion de DES para encriptar un string
-    // que te copiamos
-    /*public String ejecutarAlgoritmoCifrado(String clave, String texto){ 
-        String cifrado;
-        String iv = "00000000";
-        this.esCifrado = true;
+    // funcion que utiliza la implementacion del algoritmo para realizar la 
+    //codificación del mensaje
+    public String ejecutarAlgoritmoCifrado(String clave, String texto){ 
+        //mensaje
+        LeerArchivo la = new LeerArchivo(bloques);
+        la.setTexto(texto);
 
-        this.subclaves = new SubClave();
-        this.subclaves.generarSubClaves(clave);
-
-        this.cifrar = new CifradoDescifrado();
-
-        Vector auxiliar = new Vector();
-
-        auxiliar.add(this.subclaves.getSubClaveUno());
-        auxiliar.add(this.subclaves.getSubClaveDos());
-        auxiliar.add(this.subclaves.getSubClaveTres());
-        auxiliar.add(this.subclaves.getSubClaveCuatro());
-        auxiliar.add(this.subclaves.getSubClaveCinco());
-        auxiliar.add(this.subclaves.getSubClaveSeis());
-        auxiliar.add(this.subclaves.getSubClaveSiete());
-        auxiliar.add(this.subclaves.getSubClaveOcho());
-        auxiliar.add(this.subclaves.getSubClaveNueve());
-        auxiliar.add(this.subclaves.getSubClaveDiez());
-        auxiliar.add(this.subclaves.getSubClaveOnce());
-        auxiliar.add(this.subclaves.getSubClaveDoce());
-        auxiliar.add(this.subclaves.getSubClaveTrece());
-        auxiliar.add(this.subclaves.getSubClaveCatorce());
-        auxiliar.add(this.subclaves.getSubClaveQuince());
-        auxiliar.add(this.subclaves.getSubClaveDiezySeis());
-
-        this.cifrar.setSubClaves(auxiliar);
-
-        this.cifrar.ejecutarCifrado(texto, iv);
-
-        cifrado = this.cifrar.getTextoCifradoFinal();
-        return cifrado;
+        //codificación
+        Codificacion c = new Codificacion(clave,la.get_subtexto(), bloques);
+        c.codificar();
+        return c.get_mensaje();
     }
   
-    // Funcion que ejecuta la desencriptacion utilizando el algoritmo DES
-  public String ejecutarAlgoritmoDescifrado(String clave, String texto){
-    String descifrado;
-    String iv = "00000000";
-    this.esCifrado = false;
-
-    this.subclaves = new SubClave();
-    this.subclaves.generarSubClaves(clave);
-
-    this.descifrar = new CifradoDescifrado();
-
-    Vector auxiliar = new Vector();
-    auxiliar.add(this.subclaves.getSubClaveUno());
-    auxiliar.add(this.subclaves.getSubClaveDos());
-    auxiliar.add(this.subclaves.getSubClaveTres());
-    auxiliar.add(this.subclaves.getSubClaveCuatro());
-    auxiliar.add(this.subclaves.getSubClaveCinco());
-    auxiliar.add(this.subclaves.getSubClaveSeis());
-    auxiliar.add(this.subclaves.getSubClaveSiete());
-    auxiliar.add(this.subclaves.getSubClaveOcho());
-    auxiliar.add(this.subclaves.getSubClaveNueve());
-    auxiliar.add(this.subclaves.getSubClaveDiez());
-    auxiliar.add(this.subclaves.getSubClaveOnce());
-    auxiliar.add(this.subclaves.getSubClaveDoce());
-    auxiliar.add(this.subclaves.getSubClaveTrece());
-    auxiliar.add(this.subclaves.getSubClaveCatorce());
-    auxiliar.add(this.subclaves.getSubClaveQuince());
-    auxiliar.add(this.subclaves.getSubClaveDiezySeis());
-
-    this.descifrar.setSubClaves(auxiliar);
-
-    this.descifrar.ejecutarDescifrado(texto, iv);
-
-    descifrado = this.descifrar.getTextoCifradoFinal();
-    return descifrado;
+    // Funcion que ejecuta la desencriptacion utilizando el algoritmo
+    public String ejecutarAlgoritmoDescifrado(String clave, String textoCodificado){
+        Decodificacion d = new Decodificacion(clave,textoCodificado,bloques);
+        d.decodificar();
+        return d.get_criptomensaje();
     }
-  */
+  
     public void cerrar(){
         System.exit(0);
     }

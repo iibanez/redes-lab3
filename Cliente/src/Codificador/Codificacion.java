@@ -1,3 +1,5 @@
+package Codificador;
+
 import java.util.Random;
 
 public class Codificacion{
