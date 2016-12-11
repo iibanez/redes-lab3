@@ -10,18 +10,16 @@ public class Cliente {
     private String username;
     private String password;
     private InterfazCliente ic;
-    private String clavePublica;
 
     public Cliente(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
-    public Cliente(String username, String password, InterfazCliente ic, String clavePublica) {
+    public Cliente(String username, String password, InterfazCliente ic) {
         this.username = username;
         this.password = password;
         this.ic = ic;
-        this.clavePublica = clavePublica;
     }
 
     public String getUsername() {
@@ -47,13 +45,4 @@ public class Cliente {
     public void setIc(InterfazCliente ic) {
         this.ic = ic;
     }
-
-    public String getClavePublica() {
-        return clavePublica;
-    }
-
-    public void setClavePublica(String clavePublica) {
-        this.clavePublica = clavePublica;
-    }
-    
 }

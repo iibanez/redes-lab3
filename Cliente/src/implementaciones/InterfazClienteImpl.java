@@ -13,14 +13,9 @@ public class InterfazClienteImpl extends UnicastRemoteObject implements Interfaz
     @Override
     // funcion que notifica dependiendo del paso al cliente que corresponde
     public void notificar(String mensaje,int funcion) throws RemoteException{
-        if(funcion==3){
-            Cliente.getInstanciaVista().aviso3(mensaje);
+        if(funcion == 0){
+             Cliente.getInstanciaVista().trasmitir_a(mensaje);
         }
-        else if(funcion==4){
-            Cliente.getInstanciaVista().aviso4(mensaje);
-        }
-        else if(funcion==5){
-            Cliente.getInstanciaVista().aviso5(mensaje);
-        }
+        //else if
     }
 }

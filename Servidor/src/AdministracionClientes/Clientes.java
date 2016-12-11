@@ -77,10 +77,10 @@ public class Clientes {
     
     //Se registra al cliente "username" con contraseña "password"
     //y se setean los datos InterfazCliente y Clave Publica correspondientemente
-    public boolean authCliente(String username,String password,InterfazCliente ic,String clavePublica){
+    public boolean authCliente(String username,String password,InterfazCliente ic){
         for(Cliente c: clientes){
             if(c.getUsername().equals(username) && c.getPassword().equals(password)){
-                this.clientesAuthenticated.add(new Cliente(username,password,ic,clavePublica));
+                this.clientesAuthenticated.add(new Cliente(username,password,ic));
                 return true;
             }
         }
