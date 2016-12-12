@@ -4,42 +4,35 @@
 
 
 ## Ejecución
-Para realizar la ejecución del proyecto se debe abrir ambos proyectos en Netbeans tanto cliente como servidor, del servidor se debe crear una instancia y del cliente dos de ellas, los pasos presentados a continuación para la interfaz de cliente pueden ser realizados en cualquiera de ellas primero y luego en la otra pero se tomará un caso base para explicar el procedimiento.
-
-
+Para realizar la ejecución del programa se deben abrir ambos proyectos en Netbeans, tanto cliente como servidor. 
+Del servidor se debe crear una sola instancia y del cliente dos de ellas. Los pasos presentados a continuación, el orden de configuración de las interfaces de cliente es independiente de la interfaz elegida, es decir, puede configurarse en cualquier orden, sin embargo se tomará un caso base para explicar el procedimiento.
 
 
 ### Paso 1
 En la interfaz del servidor dar click en "Iniciar Server".
 
 
-
-
 ### Paso 2
-En la primera interfaz de cliente se debe ingresar nombre y password de usuario, dar click en "registrar" y "aceptar" ambos mensajes que aparecen tanto en el servidor como cliente avisando que el usuario es válido (CLIENTE 1).
-
+En la primera interfaz de cliente se debe ingresar nombre y password de usuario, dar click en "registrar" y "aceptar. 
+Apareceran mensajes avisando que el usuario es valido, tanto para el servidor como para el cliente. (CLIENTE 1).
 
 ```
     Usuario: ignacio
     Password: 123
 ```
-En la segunda interfaz de cliente realizar lo mismo anterior pero con los siguientes datos de usuario (CLIENTE 2).
+En la segunda interfaz de cliente, se debe realizar el mismo paso anterior pero con los siguientes datos de usuario (CLIENTE 2).
 ```
     Usuario: naty
     Password: 123
 ```
 
 
-
-
 ### Paso 3
-En CLIENTE 1 se debe ingresar el destino con el que vamos a establecer la conexión que en este caso es "naty" y damos click en "Enviar petición", en el CLIENTE 2  aparece un mensaje solicitando conexión del usuario ignacio y que ha establecido el valor de p.
+En CLIENTE 1 se debe ingresar el destino con el que vamos a establecer la conexión, en este caso es "naty" y damos click en "Enviar petición", en el CLIENTE 2  aparece un mensaje solicitando conexión del usuario ignacio y que ha establecido el valor de p.
 
 
 ### Paso 4
 En CLIENTE 2 procedemos a colocar en destino "ignacio" y dar click en "Enviar petición", en el  CLIENTE 1  aparece un mensaje diciendo que el CLIENTE 2 respondió la solicitud de conexión y establece el valor de g.
-
-
 
 
 ### Paso 5
@@ -54,18 +47,12 @@ En CLIENTE 2 dar click en “Establecer clave” y esto muestra un mensaje en CL
 En ambos clientes se ha activado el botón para poder visualizar clave secreta por lo que a ambos clientes se les da click en "Ver clave secreta" la que debe coincidir para lograr establecer la comunicación de manera correcta.
 
 
-
-
 ### Paso 8
 En CLIENTE 1 donde dice mensaje escriba lo que desea enviar y click en "Enviar a destino".
 
 
-
-
 ### Paso 9
 En el  CLIENTE 2 le aparece un mensaje dando a conocer que nos ha llegado un mensaje el que se encuentra encriptado y fue desencriptado, lo cual es posible visualizar en nuestra interfaz de cliente.
-
-
 
 
 ### Paso 10
