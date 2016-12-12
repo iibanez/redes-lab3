@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class ControladorPrincipal{
     Cliente vista;
-    int bloques = 32; //corresponde al tamaño del bloque que puede cambiar de 32 hasta 255
+    int bloques = 64; //corresponde al tamaño del bloque que puede cambiar de 32 hasta 255
                            //considerar que al verdadero valor con el mensaje es de 30 hasta 253
                            //debido a que 2 caracteres son para indicar el valor real del mensaje
   
