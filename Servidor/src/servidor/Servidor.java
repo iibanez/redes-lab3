@@ -2,29 +2,14 @@ package servidor;
 
 import AdministracionClientes.Clientes;
 import AdministracionClientes.Cliente;
-//import Cifrado.ControladorPrincipal;
 import Interfaces.Server;
 import interfaz.InterfazCliente;
 import interfaz.InterfazServidor;
-//import static java.lang.Math.round;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-//import java.util.Random;
-import java.util.StringTokenizer;
 
 public class Servidor extends UnicastRemoteObject implements InterfazServidor{
-    private Connection con;
-    private Statement stm;
-    private Statement stm1;
-    private Statement stm2;
-    private Statement stm3;
-    private ResultSet rs;
-    private ResultSet rs1;
-    private ResultSet rs2;
-    private ResultSet rs3;
+    
     private Server server = Server.getInstance();
     ////////////////////////////
     //ENCRIPTAR O DESENCRIPTAR
@@ -63,5 +48,20 @@ public class Servidor extends UnicastRemoteObject implements InterfazServidor{
         InterfazCliente ic = clienteDestinoC.getIc();
         ic.notificar(mensaje,1);
     }
+
+    @Override
+    public void enviar_p(String clienteDestino, String mensaje) throws RemoteException {
+        Cliente clienteDestinoC = this.clientesAuthenticated.getCliente(clienteDestino);
+        InterfazCliente ic = clienteDestinoC.getIc();
+        ic.notificar(mensaje,2);
+    }
+
+    @Override
+    public void enviar_g(String clienteDestino, String mensaje) throws RemoteException {
+        Cliente clienteDestinoC = this.clientesAuthenticated.getCliente(clienteDestino);
+        InterfazCliente ic = clienteDestinoC.getIc();
+        ic.notificar(mensaje,3);
+    }
+    
     
 }

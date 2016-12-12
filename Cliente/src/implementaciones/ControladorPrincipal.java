@@ -3,6 +3,10 @@ package implementaciones;
 //import Cifrado.CifradoDescifrado;
 import Codificador.*;
 import Interfaces.Cliente;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class ControladorPrincipal{
     Cliente vista;
@@ -31,6 +35,22 @@ public class ControladorPrincipal{
         Decodificacion d = new Decodificacion(clave,textoCodificado,bloques);
         d.decodificar();
         return d.get_criptomensaje();
+    }
+    
+    //Funcion para poder generar un numero primo el p o q de manera aleatoria
+    public String numeroPrimoAleatorio(int numero) throws FileNotFoundException, IOException{
+        String cadena;
+    	FileReader f = new FileReader("listaPrimos.txt");
+    	BufferedReader b = new BufferedReader(f);
+    	int i = 1;
+    	while((cadena = b.readLine())!=null) {
+    		if(i==numero){
+                    break;
+    		}
+                i++;
+    	}
+      	b.close();
+        return cadena;
     }
   
     public void cerrar(){

@@ -60,8 +60,8 @@
         <Container class="javax.swing.JPanel" name="jPanel1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Establecer Conexi&#xf3;n">
-                <Property name="tabTitle" type="java.lang.String" value="Establecer Conexi&#xf3;n"/>
+              <JTabbedPaneConstraints tabName="Establecer Conexi&#xf3;n y Comunicaci&#xf3;n">
+                <Property name="tabTitle" type="java.lang.String" value="Establecer Conexi&#xf3;n y Comunicaci&#xf3;n"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -72,67 +72,77 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel7" min="-2" pref="174" max="-2" attributes="0"/>
+                          <Component id="jLabel5" min="-2" pref="174" max="-2" attributes="0"/>
+                          <Component id="jLabel10" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jLabel16" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jLabel3" pref="174" max="32767" attributes="0"/>
-                                          <Component id="jLabel2" max="32767" attributes="0"/>
-                                          <Component id="jLabel11" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabel9" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jLabel6" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
+                                  <Component id="jLabel8" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
+                                  <Component id="jLabel16" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
+                                  <Component id="jLabel11" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
+                                  <Component id="jLabel9" min="-2" pref="172" max="-2" attributes="0"/>
+                                  <Component id="jLabel14" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
+                                  <Component id="jLabel13" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                  <Component id="jLabel3" alignment="0" pref="185" max="32767" attributes="0"/>
+                                  <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane2" min="-2" pref="200" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane3" min="-2" pref="199" max="-2" attributes="0"/>
-                                  <Component id="a_entrada" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jScrollPane2" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane3" alignment="0" min="-2" pref="199" max="-2" attributes="0"/>
                                   <Component id="a_salida" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
-                                  <Component id="random" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
                                   <Component id="password" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
-                                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="ks" min="-2" pref="143" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                                      <Component id="boton_ver_clave" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="ks" min="-2" pref="141" max="-2" attributes="0"/>
+                                          <Component id="a_entrada" alignment="1" min="-2" pref="141" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                                      <Component id="boton_ver_clave" pref="142" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="valor_g" alignment="0" pref="141" max="32767" attributes="0"/>
+                                      <Component id="valor_p" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jScrollPane1" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                          <Component id="destino" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
                                           <Component id="usuario" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
-                                          <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="random" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                              <Component id="iniciar_c" alignment="1" min="-2" pref="124" max="-2" attributes="0"/>
+                                              <Component id="destino" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                              <Component id="jLabel12" alignment="1" min="-2" pref="135" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                                  <Component id="jLabel1" min="-2" pref="135" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="boton_enviar_mensaje" alignment="0" pref="121" max="32767" attributes="0"/>
-                                          <Component id="boton_receptor" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="boton_registrar" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="boton_receptor" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="boton_crear_clave" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="boton_enviar_mensaje" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="iniciar_c" min="-2" pref="390" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="jLabel7" min="-2" pref="174" max="-2" attributes="0"/>
-                          <Component id="jLabel5" min="-2" pref="174" max="-2" attributes="0"/>
-                          <Component id="jLabel10" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <EmptySpace pref="23" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="usuario" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -153,8 +163,19 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="valor_p" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="valor_g" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="random" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="boton_crear_clave" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -180,7 +201,7 @@
                           <Component id="jScrollPane1" min="-2" pref="58" max="-2" attributes="0"/>
                           <Component id="boton_enviar_mensaje" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                           <Component id="jScrollPane2" min="-2" pref="58" max="-2" attributes="0"/>
@@ -190,7 +211,7 @@
                           <Component id="jScrollPane3" min="-2" pref="58" max="-2" attributes="0"/>
                           <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -383,6 +404,41 @@
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="boton_ver_claveMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_ver_claveActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel13">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Definir p:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="valor_p">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="valor_pActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel14">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Definir g:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="valor_g">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="valor_gActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="boton_crear_clave">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Establecer clave"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="boton_crear_claveMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_crear_claveActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
